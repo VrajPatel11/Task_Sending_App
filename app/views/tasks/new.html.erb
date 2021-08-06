@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <h1 class = "text-center mt-5" >Status Update App</h1>
+</div>
+<div class="container-fluid">
+    <h1 class = "text-center mt-5">New Status Update</h1>
+</div>
+
+<% if @task.errors.any? %>
+<h2>The following errors prevented the tasks from being submitted</h2>
+  <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>  
+<% end %>
+
+<div class="container">
+  <%= form_with  scope: :task, url: tasks_path, local:true do |f| %>
+  
+    <div class="input-group mt-5 mb-5">
+      <div class="input-group-prepend">
+        <%= f.label :date, class: "input-group-text shadow" %>
+      </div>
+      <%= f.text_field :date, class: "form-control shadow rounded", placeholder: "Enter date in yyyy/mm/dd format" %>
+    </div>
+      
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label :title, class: "input-group" %>
+        <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Enter the task you did today" %>
+      </div>
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label :pr, class: "input-group" %>
+        <%= f.text_field :pr, class: "form-control shadow rounded", placeholder: "Mention the Github PR" %>
+      </div>
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label :hours, class: "input-group" %>
+        <%= f.text_field :hours, class: "form-control shadow rounded", placeholder: "Enter the time taken" %>
+      </div>
+    </div> 
+    <div>
+        <div>
+          <%= f.submit class: "btn btn-lg btn-outline-secondary mr-5" %>
+          <button type="button" class="btn btn-outline-primary btn-lg">Preview Email</button>
+        </div>
+
+    </div>
+    
+  
+  <% end %>
+</div>

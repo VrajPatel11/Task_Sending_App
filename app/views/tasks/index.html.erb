@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <h1 class = "text-center mt-5" >Status Update App</h1>
+</div>
+<div class="container-fluid">
+    <h1 class = "text-center mt-5 mb-5">Displaying Status</h1>
+</div>
+
+<div class = "table-responsive">
+  <table class="table table-hover table-bordered ">
+    <thead class="table table-dark text-center">
+      <tr>
+        <th>Date</th>
+        <th>Tasks</th>
+        <th>PR Link</th>
+        <th>Time Taken</th>
+      </tr>
+    </thead>  
+  
+    <tbody class="table table-info text-center">
+      <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.date %></td>
+        <td><%= task.title %></td>
+        <td><%= task.pr %></td>
+        <td><%= task.hours %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> 
