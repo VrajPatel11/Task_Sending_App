@@ -5,32 +5,37 @@
   <h1 class = "text-center mt-5 mb-5">Displaying Status</h1>
 </div>
 
-<h3 class = "text-center" > Date: <%= @status.date %></h3>
-<div class = "table-responsive">
-  <table class="table table-hover table-bordered ">
-    <thead class="table table-dark text-center">
-      <tr>
-        <th>Tasks</th>
-        <th>PR Link</th>
-        <th>Time Taken</th>
-      </tr>
-    </thead>  
+  <h3 class = "text-center" > Date: <%= @status.date %></h3>
   
-    <tbody class="table table-info text-center">
-      <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.pr %></td>
-        <td><%= task.hours %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
+  <div class="container">
+  <div class = "table-responsive">
+    <table class="table table-hover table-bordered justify-content-center" >
+      <thead class="table table-dark text-center">
+        <tr>
+          <th>Tasks</th>
+          <th>PR Link</th>
+          <th>Time Taken</th>
+          <th>Actions</th>
+        </tr>
+      </thead>  
+    
+      <tbody class="table table-info text-center">
+        <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= link_to task.pr, task.pr, target: 'blank' %></td>
+          <td><%= task.hours %></td>
+          <td><%= link_to 'EDIT', edit_status_path(@status) %> / <%= link_to 'DELETE', status_path(@status), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>  
+    
   <div class="d-flex justify-content-center mt-5">
     <h4 class>Click here to view status history</h4>
   </div>
   <div class="d-flex justify-content-center mt-1">  
     <%= link_to 'Status History', statuses_path, class: "btn btn-small btn-info" %>
   </div>
-</div> 
+</div>   
