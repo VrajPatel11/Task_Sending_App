@@ -13,3 +13,20 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 require('jquery')
+require('popper.js');
+import "cocoon";
+
+$(document).ready(function () {
+  $('#task_name').on("change", function () {
+    let a = $(this).val();
+    $('#text_name').val(a)
+  });
+  $('#pr_link').on("change", function () {
+    let a = $(this).val();
+    $('#text_pr').val(a)
+  });
+  $('#time').on("change", function () {
+    let a = $(this).val();
+    $('#text_hours').val(a)
+  });
+});

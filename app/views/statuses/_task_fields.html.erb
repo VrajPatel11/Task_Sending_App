@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="nested-fields mb-5">
+    <div class= "form-row">
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label "Completed Tasks", class: "input-group" %>
+        <%= f.text_field :name, class: "form-control shadow rounded", id: "task_name", placeholder: "Enter the task you did today" %>
+      </div>
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label "PR Link", class: "input-group" %>
+        <%= f.url_field :pr, class: "form-control shadow rounded", id: "pr_link", placeholder: "Mention the Github PR" %>
+      </div>
+      <div class="form-group col-md-4 mb-5">
+        <%= f.label "Hours Taken", class: "input-group" %>
+        <%= f.number_field :hours, in:(0..24), step:"0.5", class: "form-control shadow rounded", id: "time", placeholder: "Enter the time taken" %>
+      </div>
+    </div>
+    <div class="d-flex mb-3">  
+      <%= link_to_remove_association "Delete task", f, class: "btn btn-danger" %>
+    <div>  
+  </div>
+</div>
